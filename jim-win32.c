@@ -139,7 +139,7 @@ Win32_FindWindow(Jim_Interp *interp, int objc, Jim_Obj * const *objv)
             Win32ErrorObj(interp, "FindWindow", GetLastError()));
         r = JIM_ERR;
     } else {
-        Jim_SetResult(interp, Jim_NewIntObj(interp, (long)hwnd));
+        Jim_SetResult(interp, Jim_NewIntObj(interp, (int)hwnd));
     }
     return r;
 }
@@ -436,7 +436,7 @@ Win32_GetModuleHandle(Jim_Interp *interp, int objc, Jim_Obj * const *objv)
             Win32ErrorObj(interp, "GetModuleHandle", GetLastError()));
         return JIM_ERR;
     }
-    Jim_SetResult(interp, Jim_NewIntObj(interp, (unsigned long)hModule));
+    Jim_SetResult(interp, Jim_NewIntObj(interp, hModule));
     return JIM_OK;
 }
 
@@ -454,7 +454,7 @@ Win32_LoadLibrary(Jim_Interp *interp, int objc, Jim_Obj * const *objv)
             Win32ErrorObj(interp, "LoadLibrary", GetLastError()));
         return JIM_ERR;
     }
-    Jim_SetResult(interp, Jim_NewIntObj(interp, (unsigned long)hLib));
+    Jim_SetResult(interp, Jim_NewIntObj(interp, hLib));
     return JIM_OK;
 }
 

@@ -145,7 +145,7 @@ int Jim_MakeTempFile(Jim_Interp *interp, const char *filename_template, int unli
     char name[MAX_PATH];
     HANDLE handle;
 
-    if (!GetTempPathA(MAX_PATH, name) || !GetTempFileName(name, filename_template ? filename_template : "JIM", 0, name)) {
+    if (!GetTempPathA(MAX_PATH, name) || !GetTempFileNameA(name, filename_template ? filename_template : "JIM", 0, name)) {
         return -1;
     }
 
