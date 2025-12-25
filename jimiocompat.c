@@ -145,11 +145,11 @@ int Jim_MakeTempFile(Jim_Interp *interp, const char *filename_template, int unli
     char name[MAX_PATH];
     HANDLE handle;
 
-    if (!GetTempPath(MAX_PATH, name) || !GetTempFileName(name, filename_template ? filename_template : "JIM", 0, name)) {
+    if (!GetTempPathA(MAX_PATH, name) || !GetTempFileName(name, filename_template ? filename_template : "JIM", 0, name)) {
         return -1;
     }
 
-    handle = CreateFile(name, GENERIC_READ | GENERIC_WRITE, 0, NULL,
+    handle = CreateFileA(name, GENERIC_READ | GENERIC_WRITE, 0, NULL,
             CREATE_ALWAYS, FILE_ATTRIBUTE_TEMPORARY | (unlink_file ? FILE_FLAG_DELETE_ON_CLOSE : 0),
             NULL);
 
